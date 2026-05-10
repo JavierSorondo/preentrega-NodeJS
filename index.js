@@ -29,6 +29,10 @@ function get(args) {
       .then(data => console.log(data));
   } else if (args.includes("products/")) {// producto específico
     const productId = args.split("/")[1];
+    if (productId <= 0 || isNaN(productId)) {
+      console.error('El ID del producto debe ser un número positivo. Ejemplo: get products/1');
+      process.exit(1);
+    }
     fetch(`https://fakestoreapi.com/products/${productId}`)
       .then(response => response.json())
       .then(data => console.log(data));
@@ -67,6 +71,10 @@ function deleteIt(args) {
 
   if (args.includes("products/")) {
     const productId = args.split("/")[1];
+    if (productId <= 0 || isNaN(productId)) {
+      console.error('El ID del producto debe ser un número positivo. Ejemplo: delete products/1');
+      process.exit(1);
+    }
     fetch(`https://fakestoreapi.com/products/${productId}`, {
       method: 'DELETE'
     })
