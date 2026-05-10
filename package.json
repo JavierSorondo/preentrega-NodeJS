@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"  
+    "start": "node index.js",
+    "test": "mocha test.js"
   },
   "keywords": [],
   "author": "J. M. Sorondo",
   "license": "MIT",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5"
+  }
 }
-

@@ -49,11 +49,11 @@ function post(args) {
   const product = { 
     title: args[1], 
     price: args[2], 
-    description: args[3] 
+    category: args[3] 
   };
 
-  if (!product.title || !product.price || !product.description) {
-    console.error('Para el método "post" se requieren los argumentos: title, price y description. Ejemplo: post "Nuevo Producto" 19.99 "Descripción del producto".');
+  if (!product.title || !product.price || !product.category) {
+    console.error('Para el método "post" se requieren los argumentos: title, price y category. Ejemplo: post "Nuevo Producto" 19.99 "Categoría del producto".');
     process.exit(1);
   }
 
@@ -63,9 +63,8 @@ function post(args) {
   body: JSON.stringify(product)
 })
   .then(response => response.json())
-  .then(data => console.log(`Producto agregado: ${data.title}`));
+  .then(data => console.log(`id: ${data.id}, title: '${data.title}', price: '${data.price}', category: "${data.category}"`));
 }
-
 
 function deleteIt(args) {
 
@@ -79,6 +78,6 @@ function deleteIt(args) {
       method: 'DELETE'
     })
       .then(response => response.json())
-      .then(data => console.log(`Producto eliminado: ${data.title}`));
+      .then(data => console.log(`id: ${data.id}, title: '${data.title}', price: ${data.price}, category: "${data.category}"`));
   }
 }
